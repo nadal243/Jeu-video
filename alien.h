@@ -8,9 +8,11 @@ typedef struct
     int x;
     int y;
     int couleur;
+    int compteur; 
 
 } t_alien;
 
+void deplaceAlien(t_alien *alien); 
 
 
 #endif 
