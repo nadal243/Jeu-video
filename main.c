@@ -32,6 +32,31 @@ t_sprite alien_sprite =
 };
 
 
+t_sprite alien2 =
+{
+    {0,0,1,1,1,1,1,1,0,0,0},
+    {0,1,0,1,1,1,1,0,1,0,0},
+    {1,1,1,1,1,1,1,1,1,1,0},
+    {1,0,1,1,1,1,1,1,0,1,0},
+    {1,1,1,1,1,1,1,1,1,1,0},
+    {0,1,1,0,1,1,0,1,1,0,0},
+    {0,1,0,0,0,0,0,0,1,0,0},
+    {1,0,0,0,0,0,0,0,0,1,0}
+};
+
+t_sprite alien3 =
+{
+    {0,0,1,0,0,0,0,1,0,0,0},
+    {0,1,1,1,0,0,1,1,1,0,0},
+    {1,1,1,1,1,1,1,1,1,1,0},
+    {1,1,0,1,1,1,1,0,1,1,0},
+    {1,1,1,1,1,1,1,1,1,1,0},
+    {0,1,1,1,1,1,1,1,1,0,0},
+    {0,1,0,0,1,1,0,0,1,0,0},
+    {1,0,0,1,0,0,1,0,0,1,0}
+};
+
+
 int main(void)
 {
     int touche = 0; // Variable pour stocker la touche pressée
@@ -46,6 +71,14 @@ int main(void)
         alien[i]->y = (i / 5) * 60 + 50;
         alien[i]->couleur = (i % 3) + 2; // Couleurs différentes pour les aliens (2, 3, 4)
         alien[i]->compteur = 0; // Initialisation du compteur à 0
+
+        // Association du sprite (question4)
+        if (i < 5)
+            alien[i]->sprite = &alien_sprite;
+        else if (i < 10)
+            alien[i]->sprite = &alien2;
+        else
+            alien[i]->sprite = &alien3;
     }
 
     // Initialisation de l'affichage
@@ -74,7 +107,8 @@ int main(void)
 
         // affichage des aliens
         for (int i = 0; i < 15; i++) {
-            afficheSprite(alien_sprite, alien[i]->x, alien[i]->y, alien[i]->couleur);
+            //afficheSprite(alien_sprite, alien[i]->x, alien[i]->y, alien[i]->couleur);
+            afficheAlien(alien[i]);
         }
         // deplacement des aliens
         for (int i = 0; i < 15; i++) {

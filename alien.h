@@ -9,10 +9,12 @@ typedef struct
     int y;
     int couleur;
     int compteur; 
+    t_sprite *sprite;
 
 } t_alien;
 
 void deplaceAlien(t_alien *alien); 
+void afficheAlien(t_alien *alien); 
 
 
 #endif 
